@@ -1,0 +1,60 @@
+#exp-contents
+{
+ width:800px; 
+ height:50%;
+ padding-top:1cm;
+ left:auto;
+ right:auto;
+}
+
+#utterance-contents
+{
+ text-align:center;
+ /*height:25%;*/
+ margin-bottom:1cm;
+ font-size:x-large;
+ 
+}
+
+
+#playaudio-div
+{
+	text-align:center;
+}
+
+#playaudio-div-button
+{
+	margin: 0 auto;
+}
+
+#audio-div
+{
+
+}
+
+#responses-div
+{
+    height:75%;
+    text-align:left;
+}
+
+#progress-notification
+{
+    margin-top:1cm;
+    font-size:small;
+}
+
+tr.gray-row
+{
+	background-color:Gainsboro;
+}
+
+tr.white-row
+{
+	background-color:White;
+}
+
+tr.space-under > td
+{
+  padding-bottom: 0.5em;
+}

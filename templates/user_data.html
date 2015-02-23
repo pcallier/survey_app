@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Talk Lab Participant Information</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/stimulus.css">
+		<script>
+		function switchOnOff(element_id) {
+			if (document.getElementById(element_id).disabled==true) {
+				document.getElementById(element_id).disabled=false;
+			}
+			else {
+				document.getElementById(element_id).disabled=true;
+			}
+		}
+		</script>
+	</head>
+	<body id="body" onkeypress="{ }">
+    <div id="experiment-welcome">
+        <h1>Participant survey</h1>
+        <div id="error" style="color:red;">{{error}}</div>
+        <p>We’re interested in understanding how who you are interacts with patterns we see in the data, so be as specific as you can/want to be. </p>
+    </div>
+	<div id="confirm-div">
+		<form action="/experiment-info" method="post">
+		<h2>About you</h2>
+        <table style="vertical-align:text-top;">
+            <tr class="space-under"><td>Name</td><td><table><tr><td>{{lastname|e}}, {{firstname|e}}</td></tr></table></td></tr>
+            <tr class="space-under"><td>Age</td><td><input type="number" name="age" value="{{age}}" min="0" max="150" /></td></tr>
+            <tr class="space-under" ><td>Gender</td><td><input type="text" name="gender" value="{{gender}}" /></td></tr>
+            <tr class="space-under"><td>Racial/ethnic background</td><td><input type="text" name="race" value="{{race}}" /></td></tr>
+            <tr class="space-under"><td></td><td>If you listed more than one group above and identify <em>primarily</em> with one, please put an asterisk after the name of that group.</td></tr>
+            <tr class="space-under"><td>Sexual orientation</td><td><input type="text" name="sexual_orientation" value="{{sexual_orientation}}" /></td></tr>
+            <tr class="space-under"><td style="vertical-align:top">Education</td><td>
+			<table>
+			<tr><td>Attended</td><td>Name/Location</td><td>Completed?</td></tr>
+			<tr><td>
+			<input type="checkbox" name="attended_highschool" onclick="switchOnOff('highschool'); switchOnOff('finished_highschool');" />High school	</td><td>			
+            <input type="text" id="highschool" disabled name="highschool" value="" /></td><td>
+			<input type="checkbox" disabled name="finished_highschool" id="finished_highschool" /></td></tr>
+			
+			<tr><td>
+			<input type="checkbox" name="attended_twoyear" onclick="switchOnOff('twoyear');switchOnOff('finished_twoyear');" />2-year college</td><td>		
+            <input type="text" id="twoyear" disabled  name="twoyear" value="" /></td><td>
+			<input type="checkbox"  disabled name="finished_twoyear" id="finished_twoyear" />	</td></tr>		
+			
+			
+			<tr><td>
+			<input type="checkbox" name="attended_fouryear" onclick="switchOnOff('fouryear');switchOnOff('finished_fouryear');" />4-year college	</td><td>	
+            <input type="text" id="fouryear"  disabled name="fouryear" /></td><td>
+			<input type="checkbox"  disabled name="finished_fouryear" id="finished_fouryear" />	</td></tr>
+			
+			<tr><td>
+			<input type="checkbox" name="attended_professional" onclick="switchOnOff('professional');switchOnOff('finished_professional');" />Professional school (med, law, business)</td><td>			
+            <input type="text"  disabled id="professional" name="professional" /></td><td>
+			<input type="checkbox"  disabled name="finished_professional" id="finished_professional" />	</td></tr>
+			
+			<tr><td>
+			<input type="checkbox" name="attended_masters" onclick="switchOnOff('masters');switchOnOff('finished_masters');" />Masters program</td><td>		
+			<input type="text"  disabled id="masters" name="masters" /></td><td>
+			<input type="checkbox"  disabled name="finished_masters" id="finished_masters" />	</td></tr>
+			
+			<tr><td>
+			<input type="checkbox" name="attended_doctoral" onclick="switchOnOff('doctoral');switchOnOff('finished_doctoral')" />Doctoral program</td><td>
+			<input type="text"  disabled id="doctoral" name="doctoral" /></td><td>
+			<input type="checkbox"  disabled name="finished_doctoral" id="finished_doctoral" />	</td></tr>
+			
+			<tr><td>Other</td><td colspan="2"><input type="text" name="other_education" width="100%"/></td></tr>
+			</table></td></tr>
+            <tr class="space-under"><td>Profession</td><td><input type="text" name="profession" value="{{profession}}" /></td></tr>
+
+       
+       		<tr class="space-under"><td style="vertical-align:text-top;">List where you have lived, and during what years:</td>
+       		<td><table> <tr>
+       		<tr><td>Where lived</td><td>When lived</td></tr>
+       		<td><input name="placelived_1" value="{{placelived_1}}"  /></td><td><input name="whenlived_1" value="{{whenlived_1}}" /></td></tr>
+       		<tr><td><input name="placelived_2" value="{{placelived_2}}" /></td><td><input name="whenlived_2" value="{{whenlived_2}}" /></td></tr>
+       		<tr><td><input name="placelived_3" value="{{placelived_3}}" /></td><td><input name="whenlived_3" value="{{whenlived_3}}" /></td></tr>
+       		<tr><td><input name="placelived_4" value="{{placelived_4}}" /></td><td><input name="whenlived_4" value="{{whenlived_4}}" /></td></tr>
+       		<tr><td><input name="placelived_5" value="{{placelived_5}}" /></td><td><input name="whenlived_5" value="{{whenlived_5}}" /></td></tr>
+       		<tr><td><input name="placelived_6" value="{{placelived_6}}" /></td><td><input name="whenlived_6" value="{{whenlived_6}}" /></td></tr>
+       		
+       		
+       		</table></td></tr> </table>
+       		<p></p>
+       		<p><br />
+       		<p>On the next screen you will see our contact information form. Filling this out allows us to schedule your next visit. Your contact 
+		information is stored separately from your responses above.</p>
+        <input type="submit" value="Submit" /> </p>
+		</form>
+	</div>
+	</body>
+</html>

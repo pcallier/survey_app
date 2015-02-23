@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Participant information</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/stimulus.css">
+	</head>		
+	<body id="body" onkeypress="{ }">
+		<h1>Participant {{ "%03d" % participant_no }} <span style="font-size:small;">[<a href="/delete-participant-confirm?u={{ participant_id }}">Delete user from database</a>]</span></h1>
+		<p>Number of survey responses on file: {{ userinforecords|length }}</p>
+		{% for record in userinforecords %}
+			<p><a href="/consent-info?uir={{record[0]}}">Consent information from {{record[1].strftime('%Y-%m-%d')}} for {{record[2]}}</a></p>
+		{% endfor %}
+		
+		
+		<p><a href="/list-users">Return to Dashboard</a></p>
+		
+	</body>
+</html>

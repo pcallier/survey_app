@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Register email address</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/stimulus.css">
+	</head>
+	<body id="body">
+	    <div>
+		<h1>Register email address</h1>
+		<div style="color:red;">{{error}}</div>
+		<form action="/store-email" method="post"><table>
+			<tr><td>Email address</td><td><input name="email_address" type="text" required /></td></tr>
+			<tr><td>Appt date (yyyy-mm-dd)</td><td><input name="appt_date" type="date" required /></td></tr>
+			<tr><td>Appt time (24hr hh:mm)</td><td><input name="appt_time" type="time" required /></td></tr>
+			</table>
+		<div><input type="submit" /></div>
+		</form>
+		</div>
+		<div>Go to <a href="/list-users">experiment management</a></div>
+    </body>
+</html>

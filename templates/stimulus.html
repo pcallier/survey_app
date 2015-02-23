@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}}</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/stimulus.css">
+	</head>
+	<body id="body" onkeypress="{ }">
+
+
+
+        <div id="exp-contents">
+            <div id="utterance-contents">
+                {{utterance_contents}}
+            </div>
+            <div id="audio-div">
+            <form>
+                    <!--copied in-->
+                    <audio id='stim_audio' autoplay>
+                        <source src="stimulus_files/mp3/{{stimulus_file}}.mp3" type="audio/mpeg">
+                        <source src="stimulus_files/normed/{{stimulus_file}}.wav" type="audio/wav">
+                    </audio>
+                    <!-- -->
+                    <div id="playaudio-div" style="width:100%"> 
+                        <input type="button" value="{{playtext}}" id="playaudio-dev-button" onClick="{ document.getElementById('stim_audio').load(); document.getElementById('stim_audio').play();}" >
+                    </div>
+
+                </audio>
+
+            </form>
+            
+            </div>
+
+        </div>
+
+	<div id="responses-div">
+		<form action="/store-response" method="post">
+        <input type="hidden" name="stimulus_id" value="{{stimulus_file}}" />
+        <input type="hidden" name="user_id" value="{{user_id}}" />
+		<p style="font-size:large;">根据你对说话人<b>声音</b>的印象，请回答以下问题：</p>
+		<ol>
+			<table>
+				<tbody>
+					<tr>
+						<td style="padding-bottom:12px;">
+						<li style="font-size:larger;">说话人的情绪高吗？</li>
+						</td>
+						<td>
+						<div style="width:100px;">&nbsp;</div>
+						</td>
+						<td style="padding-bottom:12px;">情绪很高</td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q1" value="6" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q1" value="5" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q1" value="4" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q1" value="3" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q1" value="2" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q1" value="1" /></td>
+						<td style="padding-bottom:12px;">情绪很低</td>
+					</tr>
+					<tr>
+						<td style="padding-bottom:12px;">
+						<li style="font-size:larger;">说话人有文化吗？</li>
+						</td>
+						<td>
+						<div style="width:100px;">&nbsp;</div>
+						</td>
+						<td style="padding-bottom:12px;">很有文化</td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q2" value="6" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q2" value="5" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q2" value="4" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q2" value="3" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q2" value="2" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q2" value="1" /></td>
+						<td style="padding-bottom:12px;">没有文化</td>
+					</tr>
+					<tr>
+						<td style="padding-bottom:12px;">
+						<li style="font-size:larger;">说话人富裕还是贫穷？</li>
+						</td>
+						<td>
+						<div style="width:100px;">&nbsp;</div>
+						</td>
+						<td style="padding-bottom:12px;">富裕</td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q3" value="6" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q3" value="5" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q3" value="4" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q3" value="3" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q3" value="2" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q3" value="1" /></td>
+						<td style="padding-bottom:12px;">贫穷</td>
+					</tr>
+					<tr>
+						<td style="padding-bottom:12px;">
+						<li style="font-size:larger;">说话人的社会地位高吗？</li>
+						</td>
+						<td>
+						<div style="width:100px;">&nbsp;</div>
+						</td>
+						<td style="padding-bottom:12px;">社会地位很高</td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q4" value="6" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q4" value="5" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q4" value="4" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q4" value="3" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q4" value="2" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q4" value="1" /></td>
+						<td style="padding-bottom:12px;">社会地位很低</td>
+					</tr>
+					<tr>
+						<td style="padding-bottom:12px;">
+						<li style="font-size:larger;">说话人有魅力吗？</li>
+						</td>
+						<td>
+						<div style="width:100px;">&nbsp;</div>
+						</td>
+						<td style="padding-bottom:12px;">很有魅力</td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q5" value="6" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q5" value="5" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q5" value="4" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q5" value="3" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q5" value="2" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q5" value="1" /></td>
+						<td style="padding-bottom:12px;">没有魅力</td>
+					</tr>
+					<tr>
+						<td style="padding-bottom:12px;">
+						<li style="font-size:larger;">说话人来自哪里？</li>
+						</td>
+						<td>
+						<div style="width:100px;">&nbsp;</div>
+						</td>
+						<td style="padding-bottom:12px;">来自城市</td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q6" value="6" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q6" value="5" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q6" value="4" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q6" value="3" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q6" value="2" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q6" value="1" /></td>
+						<td style="padding-bottom:12px;">来自农村</td>
+					</tr>
+					<tr>
+						<td style="padding-bottom:12px;">
+						<li style="font-size:larger;">说话人对话题感兴趣吗？</li>
+						</td>
+						<td>
+						<div style="width:100px;">&nbsp;</div>
+						</td>
+						<td style="padding-bottom:12px;">很感兴趣</td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q7" value="6" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q7" value="5" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q7" value="4" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q7" value="3" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q7" value="2" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q7" value="1" /></td>
+						<td style="padding-bottom:12px;">不感兴趣</td>
+					</tr>
+					<tr>
+						<td style="padding-bottom:12px;">
+						<li style="font-size:larger;">说话人的知识渊博吗？</li>
+						</td>
+						<td>
+						<div style="width:100px;">&nbsp;</div>
+						</td>
+						<td style="padding-bottom:12px;">知识渊博</td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q8" value="6" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q8" value="5" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q8" value="4" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q8" value="3" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q8" value="2" /></td>
+						<td style="padding-bottom:12px;"><input type="radio" required name="q8" value="1" /></td>
+						<td style="padding-bottom:12px;">知识浅薄</td>
+					</tr>
+				</tbody>
+			</table>
+			<table>
+				<tbody>
+					<tr>
+						<td>
+						<li>请提供至多三则能简单地描写说话人的形容词或描述语：</li>
+						</td>
+						<td><input name="adj1" /> <input name="adj2" /> <input name="adj3" /></td>
+					</tr>
+					<!--tr>
+						<td>
+						<li>请转写录音的内容（必填）：</li>
+						</td>
+						<td><input name="utterancecontents" type="text" style="width:320px;" /></td>
+					</tr-->
+				</tbody>
+			</table>
+		</ol>
+			<input type="submit" value="提交" /> 
+		</form>
+	</div>
+    
+    <div id="progress-notification">
+        进展： {{seen_stimuli}}/{{seen_stimuli+unseen_stimuli}}
+    </div>
+	
+<!--[if !IE]><!-->
+	<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+			width="10"
+			height="10"
+			id="audio1"
+			align="middle"
+			>
+			<embed src="wavplayer.swf?gui=none&h=10&w=100&sound=stimulus_files/normed/{{stimulus_file}}.wav&"
+				bgcolor="#ffffff"
+				allowScriptAccess="always"
+				type="application/x-shockwave-flash"
+				pluginspage="http://www.macromedia.com/go/getflashplayer"
+				hidden
+			/>
+		</object>
+<!--<![endif]-->	
+	</body>
+</html>

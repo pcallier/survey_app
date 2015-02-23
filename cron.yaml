@@ -1,0 +1,10 @@
+cron:
+- description: check for reminder emails to send (hourly)
+  url: /check-email-hourly
+  schedule: every 60 minutes from 07:45 to 20:45
+  timezone: America/Los_Angeles
+  
+- description: check for reminder emails to send (daily)
+  url: /check-email-daily
+  schedule: every day 23:00
+  timezone: America/Los_Angeles   

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Participant consent information</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/stimulus.css">
+	</head>		
+	<body id="body" onkeypress="{ }">
+		<h1>Consent information: Participant {{ "%03d" % participant_no }}</h1>
+		Name: {{ participant_name }}
+		<form action="" method="post">
+		<input type="hidden" name="uir_id" value="{{ uir_id }}" />
+		<input type="hidden" name="session_id" value="{{ session_id }}" />
+		<input type="hidden" name="loop" value="{{ loop }}" />
+		<p>Date of consent: <input type="date" name="consent_date" value="{{ consent_date }}" required></p>
+		<p><input type="checkbox" name="consent_signature" value="TRUE" 
+			{% if consent_signature %}checked{% endif %} />(has signed form)</p>
+		<p><input type="checkbox" name="consent_taping" value="TRUE" 
+			{% if consent_taping %}checked{% endif %} />I give consent to be audiotaped and videotaped during this study.</p>
+		<p><input type="checkbox" name="consent_identity" value="TRUE" 
+			{% if consent_identity %}checked{% endif %} />I give consent for my identity to be associated 
+			with my recording, and in written materials resulting from this study.</p>
+		<p><input type="checkbox" name="consent_conferences" value="TRUE" 
+			{% if consent_conferences %}checked{% endif %} />I give consent for small segments of my 
+			recording to be played at research conferences.</p>
+		<p><input type="checkbox" name="consent_experiments" value="TRUE" 
+			{% if consent_experiments %}checked{% endif %} />I give consent for small segments of my 
+			recording to be shown to subjects in other experiments.</p>
+		<p><input type="checkbox" name="consent_stanford" value="TRUE" 
+			{% if consent_stanford %}checked{% endif %} />I give consent for my recording to be kept 
+			indefinitely, and used for research by Stanford researchers.</p>
+		<p><input type="checkbox" name="consent_outside" value="TRUE" 
+			{% if consent_outside %}checked{% endif %} />I give consent for my recording to be made 
+			available to researchers outside of Stanford.</p>
+		<p><input type="checkbox" name="consent_followup" value="TRUE" 
+			{% if consent_followup %}checked{% endif %} />We do not anticipate doing any
+			follow-up studies beyond the two recording sessions mentioned above,
+			but just in case, please give your preference: <br />
+			I give consent for Stanford researchers to contact me in the future if
+			they do follow-up studies.</p>
+
+		<p>Other notes, modifications, comments:<br />
+			<textarea rows="3" cols="40">{{ consent_notes }}</textarea>
+			</p>
+
+		<input type="submit"  />
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New session ID</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/stimulus.css">
+	</head>
+	<body id="body">
+	    {% if xp_id != -1 %}
+	    <p>Interaction to terminate: {{ xp_id }}. Please fill out the following information.</p>
+	    <form action="/store-session-info" method="post">
+	        <p>Number of participants: <input type="number" name="no_of_participants" min="1" max="10" value="2" required /> </p>
+	        <p>Notes on questions responded to: <input type="text" name="questions_data" size="50" /></p>
+	        <p>Other comments:<br /><textarea rows="3" cols="50" name="other_info"></textarea></p>
+	        <input type="hidden" name="xp_id" value="{{xp_id}}" />
+	        <input type="submit" value="Continue"/>
+	    </form>
+        {% else %}
+        No open experiment session and no experiment session ID specified (use "?i=XXX" in the URL to specify session ID number)
+        {% endif %}    
+     </body>
+</html>

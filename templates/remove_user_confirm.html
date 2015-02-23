@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Participant information</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/stimulus.css">
+	</head>		
+	<body id="body" onkeypress="{ }">
+		<h1>Confirm user deletion</h1>
+		<form action="/delete-participant-confirm" method="post">
+			<p>Really delete user {{ participant_id }} permanently? </p>
+			<p>This cannot be undone.</p>
+			<input type="hidden" name="u" value="{{ participant_id }}" />
+			<p><input type="Submit" value="Confirm" />
+			<a href="/participant-info?u={{ participant_id }}">Go back</a> </p>
+		</form>
+	</body>
+</html>

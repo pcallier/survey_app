@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New user</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/stimulus.css">
+	</head>
+	<body id="body">
+	    <div>
+		<h1>Register participant</h1>
+		<form action="/add-user" method="post"><table>
+		<tr><td>First name</td><td><input name="firstname" type="text" /></td></tr>
+		<tr><td>Last name</td><td><input name="lastname" type="text" /></td></tr>
+		</table>
+		{% if xp_session != None %}
+		Add to current session: <input name="add_to_session" checked value="yes" type="checkbox" />
+		{% endif %}
+		<div><input type="submit" /></div>
+		</form>
+		</div>
+		<div>Go to <a href="/list-users">experiment management</a></div>
+    </body>
+</html>

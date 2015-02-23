@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>New session ID</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/stimulus.css">
+	</head>
+	<body id="body">
+	    {% if old_xp_id != None %}
+            <p><em>Warning!</em> There were open experiments: session {{ old_xp_id }}. They have been closed automatically. If this was a real session, please visit <a href="/end-experiment?i=">http://talklab-survey.appspot.com/end-experiment?i=ID number</a> at any time to fill out the session information for each ID number in turn. This warning will only appear once. Please write down the above ID numbers now.</p>
+	    {% endif %}
+	    <p>New session has been initiated. <b>Interaction number is {{ new_xp_id }}</b>. Please take note.</p>
+		<div>Go to <a href="/list-users">experiment management</a></div>
+    </body>
+</html>

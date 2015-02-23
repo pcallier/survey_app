@@ -1,0 +1,17 @@
+﻿<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Bloggor!{% block title %}{% endblock %}</title>
+		<LINK href="/stylesheets/stylesheet.css" rel="stylesheet" type="text/css">
+	</head>
+	<style type="text/css">
+	</style>
+    <body>
+        <h1><a href="/blog">My blog</a></h1>
+		<a href="/blog/newpost">Make a new post</a>
+		<hr>
+		{% block body %}{% endblock %}
+		{% if query_age is defined %}Queried {{ query_age }} seconds ago{% endif %}
+    </body>
+</html>

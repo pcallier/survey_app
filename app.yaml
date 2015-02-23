@@ -1,0 +1,19 @@
+application: talklab-survey
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: no
+
+handlers:
+- url: /stimulus_files/normed
+  static_dir: stimulusfiles/normed
+- url: /stylesheets
+  static_dir: stylesheets
+- url: /.*
+  script: talklab_survey.app
+  
+libraries:
+- name: webapp2
+  version: "2.5.1"
+- name: jinja2
+  version: latest

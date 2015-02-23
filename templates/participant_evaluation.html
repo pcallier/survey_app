@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Talk Lab Participant Information</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/stimulus.css">
+	</head>
+	<body id="body" onkeypress="{ }">
+    <div id="experiment-welcome">
+        <h1>Participant Survey</h1>
+    </div>
+	<div id="confirm-div">
+		<form action="/participant-evaluation" method="post">
+		<div style="color:red">{{error}}</div>
+			<h3>Participant name: {{lastname}}, {{firstname}}</h3>
+            <input type="hidden" name="user_id" value="{{selected_id}}" />
+			<h2>About your conversation partner</h2>
+            <p>What is your relationship with the person you talked to today?
+            <select required name="relationship">
+                <option value="">Choose one...</option>
+                <option {% if response_record['relationship']|default('')|string == "stranger" %} selected {% endif %}>stranger</option>
+                <option {% if response_record['relationship']|default('')|string == "acquaintance" %} selected {% endif %}>acquaintance</option>
+                <option {% if response_record['relationship']|default('')|string == "friend" %} selected {% endif %}>friend</option>
+                <option {% if response_record['relationship']|default('')|string == "close/best friend" %} selected {% endif %}>close/best friend</option>
+                <option {% if response_record['relationship']|default('')|string == "romantic partner" %} selected {% endif %}>romantic partner</option>
+                <option {% if response_record['relationship']|default('')|string == "other" %} selected {% endif %} value="other">other (please elaborate)</option>
+                </select>
+			</p>
+			<p>More information about your relationship: <input type="text" name="relationship_more" value="{{response_record['relationship_more']|default('')|string}}" />
+			</p>
+            <h2>If you had to guess about your conversation partner, how would you classify...</h2>  
+            <table>
+            <tr class="space-under"><td>Your partner's age</td><td style="padding-left:1em;"><input type="number" min="0" max="120" name="interlocutor_age" value="{{ response_record['interlocutor_age']|default(0)|int }}" required /></td></tr>
+            <tr class="space-under" ><td>Your partner's gender</td><td style="padding-left:1em;"><input type="text" name="interlocutor_gender" value="{{response_record['interlocutor_gender']|default('')|string}}"  /></td></tr>
+            <tr class="space-under"><td>Your partner's racial/ethnic background</td><td style="padding-left:1em;"><input type="text" name="interlocutor_race" value="{{response_record['interlocutor_race']|default('')|string}}"  /></td></tr>
+            <tr class="space-under"><td>Your partner's sexual orientation</td><td style="padding-left:1em;"><input type="text" name="interlocutor_sexual_orientation" value="{{response_record['interlocutor_sexual_orientation']|default('')|string}}"  /></td></tr>
+            </table>
+           
+            <table>
+            
+            <tr><td colspan="4"><h2>Please rate the interaction you just had...</h2></td></tr>
+            <tr class="space-under"><td>How much did you enjoy it?</td><td style="padding-left:2em;vertical-align:text-top;text-align:right;">Not at all</td><td><input name="enjoyed_self" type="range" value="{{response_record['enjoyed_self']|default(0)|int}}" max="100" min="0" /></td><td style="vertical-align:text-top;">Extremely</td></tr>
+            <tr class="space-under"><td>How much do you think your conversation partner enjoyed it?</td><td style="padding-left:2em;vertical-align:text-top;text-align:right;">Not at all</td><td><input name="interlocutor_enjoyed" type="range" value="{{response_record['interlocutor_enjoyed']|default(0)|int}}" max="100" min="0" /></td><td  style="vertical-align:text-top;">Extremely</td></tr>
+            <tr class="space-under"><td>How comfortable was it for you?</td><td style="padding-left:2em;vertical-align:text-top;text-align:right;">Not at all</td><td><input name="felt_comfortable_self" type="range" value="{{response_record['felt_comfortable_self']|default(0)|int}}" max="100" min="0" /></td><td  style="vertical-align:text-top;">Extremely</td></tr>
+            <tr class="space-under"><td>How comfortable do you think it was for your conversation partner?</td><td style="padding-left:2em;vertical-align:text-top;text-align:right;">Not at all</td><td><input name="interlocutor_felt_comfortable" type="range" value="{{response_record['interlocutor_felt_comfortable']|default(0)|int}}" max="100" min="0" /></td><td  style="vertical-align:text-top;">Extremely</td></tr>
+            <tr><td>How much did the two of you click?</td><td style="padding-left:2em;vertical-align:text-top;text-align:right;">Not at all</td><td><input name="we_clicked" type="range" value="{{response_record['we_clicked']|default(0)|int}}" max="100" min="0" /></td><td style="vertical-align:text-top;">Extremely</td></tr>
+            
+                
+             <tr><td colspan="4" style="padding-top:3em;"><h2>How likely would you be to...</h2></td></tr>
+             
+            <tr class="space-under"><td>Hang out with this person in a group?</td><td style="padding-left:2em;vertical-align:text-top;text-align:right;">Very unlikely</td><td><input type="range" value="{{response_record['hang_out_group']|default(0)|int}}" name="hang_out_group" min="0" max="100" /></td><td  style="vertical-align:text-top;">Very likely</td></tr>
+
+            <tr class="space-under"><td>Hang out with this person one on one?</td><td style="padding-left:2em;vertical-align:text-top;text-align:right;">Very unlikely</td><td><input type="range" value="{{response_record['hang_out_alone']|default(0)|int}}" name="hang_out_alone" min="0" max="100" /></td><td style="vertical-align:text-top;">Very likely</td></tr>
+
+            <tr class="space-under"><td>Go on a date with this person?</td><td style="padding-left:2em;vertical-align:text-top;text-align:right;">Very unlikely</td><td><input type="range" value="{{response_record['go_on_a_date']|default(0)|int}}" name="go_on_a_date" min="0" max="100" /></td><td style="vertical-align:text-top;">Very likely</td></tr>
+                
+
+            <tr class="space-under"><td>Set this person up with a friend?</td><td style="padding-left:2em;vertical-align:text-top;text-align:right;">Very unlikely</td><td><input type="range" value="{{response_record['set_them_up']|default(0)|int}}" name="set_them_up" min="0" max="100" /></td><td style="vertical-align:text-top;">Very likely</td></tr>
+
+
+</table>
+                
+<div style="margin-top: 4em;">
+	Where did you sit today?
+	<select required name="where_sat">
+		<option value=""></option>
+		<option value="sofa" {% if response_record.where_sat|default('') == "sofa" %} selected {% endif %}>sofa</option>
+		<option value="chair" {% if response_record.where_sat|default('') == "chair" %} selected {% endif %}>armchair</option>
+		<option value="other" {% if response_record.where_sat|default('') == "other" %} selected {% endif %}>other</option>
+	</select>
+</div>
+<div style="margin-top: 4em;">
+    Is there anything about the interaction that you want to elaborate on?<br />
+    <textarea name="more_comments" rows="4" cols="50">{{response_record.more_comments}}</textarea></td></tr>
+             
+       		<p></p>
+       		<p>We would also like to get some demographic information from you. Please proceed to the next page.<br />
+        <input type="submit" value="Next..." /> </p>
+            </div>
+		</form>
+	</div>
+	</body>
+</html>

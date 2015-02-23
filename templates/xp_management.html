@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Talk Lab Dashboard</title>
+        <link rel="stylesheet" type="text/css" href="/stylesheets/stimulus.css">
+		<style>
+			td
+			{
+				padding-left:8px;
+			}
+			div
+			{
+				padding-bottom:6px;
+			}
+		</style>
+	</head>
+	<body id="body">
+		<h1>Talk Lab Dashboard</h1>
+		{% if error %}
+		<div color="red">{{error}}</div>
+		{% endif %}
+		{% if xp_session != None %}
+			<div>Current interaction number: <b>{{"%03d" % xp_session}}</b>, started {{xp_session_datetime}}</div>
+			<div><a href="/end-experiment">End experiment</a></div>
+		{% else %}
+			<div>No current interaction session. <a href="/get-new-experiment" >Start a session</a></div>
+		{% endif %}
+			<h2>Participants</h2>
+			<div><a href="/store-email" >Register an appointment reminder</a> (needs email address and date/time)</div>
+	    {% if users != [] %}
+			<a href="/add-user">Register a participant</a> (needs full name)
+			<table style="padding-top:10px;"> 
+				<tr><td>Participant ID</td><td>Last name</td><td>First name</td><td>Status</td><td>Action</td></tr>
+			{% for (public_id, lastname, firstname, user_id) in user_info %}
+				<tr><td>{{"%03d" % public_id}}</td><td>{{lastname}}</td><td>{{firstname}}</td><td>
+				{% if user_id in xp_participants %}
+					In current session</td><td>
+					<a href="{{redirect_url}}?remove={{user_id}}">remove</a>
+					<a href="/participant-evaluation?u={{user_id}}">survey</a>
+				{% else %}
+					{% if xp_session != None %}
+					</td><td>
+					<a href="{{redirect_url}}?i={{user_id}}" >add</a>
+					{% endif %}
+				{% endif %}
+				</td><td><a href="/participant-info?u={{user_id}}">info</td></tr>
+			{% endfor %}
+			</table>
+		{% endif %}
+		
+		<p><a href="/responses-all.tsv">Download all survey responses as TSV</a></p>
+     </body>
+</html>
